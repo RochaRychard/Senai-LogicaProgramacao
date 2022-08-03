@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="aluno"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-07-07 09:44:40 "/>
+        <attribute name="created" value="YWx1bm87UEMzMS00MzcxMjsyMDIyLTA3LTA3OyIwNjo0NjozMiAiOzIyODg="/>
+        <attribute name="edited" value="YWx1bm87UEMzMS00MzcxMjsyMDIyLTA3LTA3OyIwOTo0NDo0MCAiOzE7MjM5Ng=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="quantidade, cont, i" type="Integer" array="False" size=""/>
+            <declare name="prodComprado" type="String" array="False" size=""/>
+            <declare name="item" type="String" array="True" size="100"/>
+            <declare name="nota, valorMedio, quantItem, mediaConsumo, estoque, mediaValor" type="Real" array="False" size=""/>
+            <assign variable="mediaValor" expression="0"/>
+            <assign variable="mediaConsumo" expression="0"/>
+            <output expression="&quot;Quantos itens usados em sua casa deseja cadastrar? &quot;" newline="True"/>
+            <input variable="quantidade"/>
+            <for variable="i" start="1" end="quantidade" direction="inc" step="1">
+                <output expression="i &amp; &quot;&#176; Item &#13;&#10;Qual produto est&#225; comprando? &quot;" newline="True"/>
+                <input variable="item[i]"/>
+                <output expression="&quot;Quanto voc&#234; consome de &quot; &amp; item[i] &amp; &quot; no ano? &quot;" newline="True"/>
+                <input variable="quantItem"/>
+                <assign variable="mediaConsumo" expression="quantItem / 12"/>
+                <output expression="&quot;Qual o valor m&#233;dio? &quot;" newline="True"/>
+                <input variable="valorMedio"/>
+                <output expression="&quot;Quanto de &quot; &amp; item[i] &amp; &quot; voc&#234; ainda possui em estoque? &quot;" newline="True"/>
+                <input variable="estoque"/>
+                <output expression="&quot;Voc&#234; consome &quot; &amp; mediaConsumo &amp; &quot; de &quot; &amp; item[i] &amp; &quot; por m&#234;s.&quot;" newline="True"/>
+                <output expression="&quot;Voc&#234; tem &quot; &amp; estoque &amp; &quot; de &quot; &amp; item[i] &amp; &quot; no estoque.&quot;" newline="True"/>
+                <if expression="estoque &lt;= mediaConsumo">
+                    <then>
+                        <output expression="&quot;Repor estoque!&quot;" newline="True"/>
+                        <output expression="&quot;Pre&#231;o acess&#237;vel!&quot;" newline="True"/>
+                    </then>
+                    <else>
+                        <if expression="estoque &gt; mediaConsumo">
+                            <then>
+                                <output expression="&quot;Estoque abastecido!&quot;" newline="True"/>
+                                <output expression="&quot;Pre&#231;o inacess&#237;vel!&quot;" newline="True"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </else>
+                </if>
+            </for>
+        </body>
+    </function>
+</flowgorithm>
